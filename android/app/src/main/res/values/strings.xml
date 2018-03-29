@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NameFace</string>
+    <string name="app_url">https://www.sandbox.csun.edu/metalab/nameface</string>
+    <string name="app_url_tld">csun.edu</string>
+</resources>
