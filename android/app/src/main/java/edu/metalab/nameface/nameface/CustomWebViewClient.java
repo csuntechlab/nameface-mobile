@@ -10,7 +10,7 @@ public class CustomWebViewClient extends WebViewClient {
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
         // let the application capture all the urls that end in app_url_tld
         // otherwise the OS will prompt us to pick a browser
-        if(Uri.parse(url).getHost().contains(String.valueOf(R.string.app_url_tld))) {
+        if(Uri.parse(url).getHost().contains(getString(R.string.app_url_tld))) {
             return false;
         }
         return true;
