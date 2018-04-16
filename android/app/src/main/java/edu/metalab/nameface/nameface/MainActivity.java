@@ -8,18 +8,31 @@ import android.webkit.WebView;
 
 public class MainActivity extends Activity {
 
+    private WebView mWebView;
+
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // set the view
         setContentView(R.layout.web_view);
-        WebView myWebView = findViewById(R.id.web_view);
+        mWebView = findViewById(R.id.web_view);
         // set parameters of the web view
-        myWebView.loadUrl(String.valueOf(R.string.app_name));
-        myWebView.setWebViewClient(new CustomWebViewClient());
+        mWebView.loadUrl(getString(R.string.app_url));
+        mWebView.setWebViewClient(new CustomWebViewClient());
         // Enable Javascript
-        WebSettings webSettings = myWebView.getSettings();
+        WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+    }
+
+    @Override
+    public void onBackPressed() {
+        // We do this to keep the built-in ability to go back
+        // as users are used to in native apps
+        if (mWebView.canGoBack() && mWebView.isFocused()) {
+            mWebView.goBack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }
